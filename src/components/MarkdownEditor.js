@@ -24,7 +24,7 @@ export default class MarkdownEditor extends Component {
           rows="4"
           cols="60"
           defaultValue={this.state.value}
-          onChange={e => this.handleChange(e)}
+          onChange={this.handleChange}
         />
         <h2>Output</h2>
         <p className="output" dangerouslySetInnerHTML={this.getRawMarkup()} />
