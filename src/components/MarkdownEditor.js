@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Remarkable from "remarkable";
-let md = new Remarkable();
 
 export default class MarkdownEditor extends Component {
   constructor(props) {
@@ -12,8 +11,9 @@ export default class MarkdownEditor extends Component {
   handleChange = e => {
     this.setState({ value: e.target.value });
   };
-  rawOutput = () => {
-    return { __html: md.render(this.state.value) };
+  getRawMarkup = () => {
+    let md = new Remarkable(); // Create new instance of Remarkable
+    return { __html: md.render(this.state.value) }; // Markdown -> HTML
   };
   render() {
     return (
@@ -27,7 +27,7 @@ export default class MarkdownEditor extends Component {
           onChange={e => this.handleChange(e)}
         />
         <h2>Output</h2>
-        <p className="output" dangerouslySetInnerHTML={this.rawOutput()} />
+        <p className="output" dangerouslySetInnerHTML={this.getRawMarkup()} />
       </div>
     );
   }
