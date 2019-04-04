@@ -11,10 +11,10 @@ export default class MarkdownEditor extends Component {
   handleChange = e => {
     this.setState({ value: e.target.value });
   };
-  getRawMarkup = () => {
+  getRawMarkup() {
     let md = new Remarkable(); // Create new instance of Remarkable
     return { __html: md.render(this.state.value) }; // Markdown -> HTML
-  };
+  }
   render() {
     return (
       <div className="MarkdownEditor">
